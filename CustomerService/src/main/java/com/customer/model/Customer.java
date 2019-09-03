@@ -1,11 +1,13 @@
-package com.account.model;
+package com.customer.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -14,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name="ACCOUNTS")
+@Table(name="CUSTOMER")
 @Entity
 @Getter
 @Setter
@@ -22,28 +24,29 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class AccountModel implements Serializable{
+public class Customer implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id//Pk
-	@Column(name="ACCOUNTID")
-	Integer accountId;
-	
-	@Column(name="BALANCE")
-	Double balance;
-	
 	@Column(name="CUSTOMERID")
 	Integer customerId;
 	
-	@Column(name="ACCOUNTTYPE")
-	String accountType;
+	@Column(name="CUSTOMERNAME")
+	String customerName;
 	
-	@Column(name="BRANCHCODE")
-	String branchCode;
+	@Column(name="MOBILE")
+	String mobile;
 	
-	@Column(name="BANK")
-	String bank;
+	@Column(name="EMAIL")
+	String email;
+	
+	@Column(name="CITY")
+	String city;
+	
+	@Transient
+	List<Account> account;
+	
 	
 }

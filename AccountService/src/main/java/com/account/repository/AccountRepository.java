@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.account.model.AccountModel;
+import com.account.model.Account;
 
-public interface AccountRepository extends CrudRepository<AccountModel, Integer> {
+public interface AccountRepository extends CrudRepository<Account, Integer> {
 
-	List<AccountModel> findAllByCustomerId(Integer customerId);
+	List<Account> findAllByCustomerId(Integer customerId);
 
-	List<AccountModel> findAllByAccountType(String accountType);
+	List<Account> findAllByAccountType(String accountType);
 
-	List<AccountModel> findByBank(String bank);
+	List<Account> findByBank(String bank);
 
-	AccountModel findAccountByAccountId(Integer accountId);
+	Account findAccountByAccountId(Integer accountId);
 }

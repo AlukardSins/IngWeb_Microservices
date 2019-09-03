@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.account.model.AccountModel;
+import com.account.model.Account;
 import com.account.repository.AccountRepository;
 
 @RestController
@@ -21,42 +21,42 @@ public class AccountController {
 	AccountRepository accountRepository;
 	
 	@PostMapping(value = "/account")
-	public AccountModel save (@RequestBody AccountModel account){
+	public Account save (@RequestBody Account account){
 		return accountRepository.save(account);
 	}
 	
 	@GetMapping(value = "/account")
-	public Iterable<AccountModel> all (){
+	public Iterable<Account> all (){
 		return accountRepository.findAll();
 	}
 	
 	@GetMapping(value = "/account/{accountId}")
-	public AccountModel findByAccountId (@PathVariable Integer accountId){
+	public Account findByAccountId (@PathVariable Integer accountId){
 		return accountRepository.findAccountByAccountId(accountId);
 	}
 	
 	@PutMapping(value = "/account")
-	public AccountModel update (@RequestBody AccountModel account){
+	public Account update (@RequestBody Account account){
 		return accountRepository.save(account);
 	}
 	
 	@DeleteMapping(value = "/account")
-	public void delete (@RequestBody AccountModel account){
+	public void delete (@RequestBody Account account){
 		accountRepository.delete(account);
 	}
 	
 	@GetMapping(value = "/account/account-type/{type}")
-	public List<AccountModel> findByAccountType (@PathVariable String type){
+	public List<Account> findByAccountType (@PathVariable String type){
 		return accountRepository.findAllByAccountType(type);
 	}
 	
 	@GetMapping(value = "/account/bank/{bank}")
-	public List<AccountModel> findByBank (@PathVariable String bank){
+	public List<Account> findByBank (@PathVariable String bank){
 		return accountRepository.findByBank(bank);
 	}
 	
 	@GetMapping(value = "/account/customer/{customer}")
-	public List<AccountModel> findByCutomer (@PathVariable Integer customer){
+	public List<Account> findByCutomer (@PathVariable Integer customer){
 		return accountRepository.findAllByCustomerId(customer);
 	}
 }
